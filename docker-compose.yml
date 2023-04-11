@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  work:
+    build: .
+    ports:
+      - '80:5005'
+    labels:
+      dev.okteto.com/auto-ingress: "true"
+    environment:
+      - 'NEZHA_SERVER=${NEZHA_HOST}'
+      - 'NEZHA_PORT=${NEZHA_PORT}'
+      - 'NEZHA_KEY=${NEZHA_TOKEN}'
+    volumes:
+      - ./config:/app
